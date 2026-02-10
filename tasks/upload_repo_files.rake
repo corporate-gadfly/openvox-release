@@ -27,7 +27,7 @@ namespace :vox do
           return
         end
       end
-      run_command("#{@s3} cp #{file} #{s3path}", print_command: true, silent: false)
+      run_command("#{@s3} cp #{file} #{s3path} --no-progress", print_command: true, silent: false)
     end
 
     Dir.glob('yum_repo_files/*.repo').each { |f| upload(f, "s3://openvox-yum/repo_files/#{File.basename(f)}") }
